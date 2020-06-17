@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  layout false, only: [:office_display]
 
   # GET /users
   # GET /users.json
@@ -12,6 +13,9 @@ class UsersController < ApplicationController
   def show
   end
 
+  def office_display
+    @user = User.find(session[:user_id])
+  end
 
   def landing
     @user = User.find(session[:user_id])
@@ -66,17 +70,35 @@ class UsersController < ApplicationController
   end
 
   def update_status
-    decode_token = JWT.decode(request.headers[:token], "okcool", true, {algorithm: 'HS256'})
-    foundProfile = User.find(decode_token[0]["user"])
-    foundProfile.status_id = request.headers[:status]
-    if foundProfile.save
-      render json: foundProfile.to_json(except: [:password_digest])
+    if request.headers[:token]
+      decode_token = JWT.decode(request.headers[:token], "okcool", true, {algorithm: 'HS256'})
+      foundProfile = User.find(decode_token[0]["user"])
+      
+      if foundProfile
+        foundProfile.status_id = request.headers[:status]
+        status = Status.find(request.headers[:status])
+        if foundProfile.save
+          render json: "Status updated to #{status.status}"
+        else
+          render json: "Status update failed"
+        end
+      else
+        render json: "Invalid Token"
+      end
     else
-      render json: "Status update failed"
+      render json: "No login token provided"
     end
-    
-
   end
+
+  def current_status
+    if request.headers[:token]
+      decode_token = JWT.decode(request.headers[:token], "okcool", true, {algorithm: 'HS256'})
+      foundProfile = User.find(decode_token[0]["user"])
+      render json: "#{foundProfile.status.status}"
+      
+    end
+  end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
