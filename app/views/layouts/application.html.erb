@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes">
+  <title>Status Pages</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render "layouts/menu" %>
+<div class="col-md-9 col-centered">
+    <div id="main-container" class="container">
+      <section id="container">
+      </br>
+    
+        <div id="error_explination">
+        <%= render "layouts/flashes"  %>
+        </div>
+        <%= yield %>
+      </section>
+    
+  </div>
+</div>
+
+</body>
+</html>
