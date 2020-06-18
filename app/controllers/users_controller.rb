@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_signin, only: [:index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   layout false, only: [:office_display]
 
@@ -19,7 +20,6 @@ class UsersController < ApplicationController
 
   def landing
     @user = User.find(session[:user_id])
-    @status = CurrentStatus.where(user_id: @user_id).first
   end
   # GET /users/new
   def new

@@ -22,7 +22,7 @@
           <%= link_to "#{current_user.name}", current_user %>
           </li><li class="nav-list-border"><%= link_to 'Sign Out', sessions_path, method: :delete %>
         <% else %>
-          <%= link_to 'Sign In', '#' %>
+          <%= link_to 'Sign In', new_sessions_path %>
         <% end %>
         </li>
           </li>

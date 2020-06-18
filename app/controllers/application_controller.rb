@@ -1,13 +1,19 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  before_action :require_signin
+  
+
+  private
+
+  	def require_signin
+    	unless current_user
+      		redirect_to new_session_url, alert: "Please sign in first!"
+    	end
+  	end
+  	
+  	def current_user
+    	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+  	end
+
+  	helper_method :current_user
 end
-# class ApplicationController < ActionController::API
-#  before_action :authenticate_request
-#   attr_reader :current_user
-
-#   private
-
-#   def authenticate_request
-#     @current_user = AuthorizeApiRequest.call(request.headers).result
-#     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
-#   end
-# end

@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  # skip_before_action :require_signin
+  skip_before_action :require_signin
   # skip_before_action :require_admin
 
-  def landing
-    
-  end
+
 
   # GET /resource/sign_in
   def new

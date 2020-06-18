@@ -1,1 +1,5 @@
-<%= @user.status.status %>
+<%= content_tag(:body, nil, :class => "od-#{@user.status.status.delete(' ')}") do %>
+
+	<%= @user.status.status %>
+
+<% end %>
