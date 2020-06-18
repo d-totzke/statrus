@@ -3,7 +3,7 @@
 
 <div class="list-group">
   <% @users.each do |u| %>
-    <%= content_tag(:li, nil, :class => "list-group-item #{u.status.status.delete(' ')}") do %>
+    <%= content_tag(:li, nil, :class => "list-group-item #{u.status.status.delete(' ').downcase}") do %>
     <%= u.name.ljust(100, ' ') %>|<%= u.status.status.rjust(500, ' ') %>
     <%end %>
 
