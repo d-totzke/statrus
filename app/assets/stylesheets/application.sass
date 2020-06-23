@@ -20,7 +20,11 @@ $grid-float-breakpoint: 1000px
 @import "bootstrap"
 @import font-awesome
 
-$color: #ff3d00
+$color: #546e7a
+$color-dark: #29434e
+$color-light: #819ca9
+
+
 
 
 
@@ -69,17 +73,18 @@ a:hover img
 
 .navbar-default
   background-color: $color
-  border-color: black
+  border-color: $color
   padding-bottom: 0px
   border-bottom: 0px
   margin-bottom: 0px
 
 
 .navbar-default .navbar-nav > li > a
-  color: #000000
+  color: white
   padding: 15px
 
 .navbar
+  border-radius: 0px
   .navbar-nav
     display: block
     float: none
@@ -91,19 +96,19 @@ a:hover img
 
 .navbar-toggle
   background-color: $color
-  color: #000000
+  color: white
   border: none
 
 .in .nav-list-border
   border-bottom: 1px solid #000000
-  background-color: #ff7539
+  background-color: $color-light
 
 .navbar-default .navbar-toggle
   &:hover, &:focus
-    background-color: #ff7539
+    background-color: $color-light
 
 .navbar-default .navbar-toggle .icon-bar
-  background-color: black
+  background-color: white
   border: none
 
 .btn-default
@@ -112,11 +117,11 @@ a:hover img
 
 .btn-primary
   background-color: $color
-  color: black !important
+  color: white !important
   border: none
 
 .btn-primary:hover
-  background-color: #ff7539
+  background-color: $color-light
 
 .btn-green
   background-color: #326150
@@ -160,29 +165,52 @@ a:hover img
 .table-hover
   font-family: courier
 
+.logo
+  height: 50px
+
 /* Styles for Statuses */
 
 .backshortly
-  background: yellow
+  background: #ffeb3b
 
 .available
-  background: green
-  color: white
+  background: #4caf50
 
 .inameeting
-  background: #c30000
-  color: white
+  background: #ff9800
 
 .workingremotely
-  background: teal
-  color: white
+  background: #4ebaaa
 
 .outoftheoffice
-  background: red
+  background: #e53935
 
 /* Styles for office display */
+.availability-text
+  left: 0
+  line-height: 200px
+  margin-top: -100px
+  position: absolute
+  text-align: center
+  top: 50%
+  width: 100%
+  font-size: 15vw
+  color: black
+  font-family: Marker Felt, fantasy
 .od-available
-  background-color: green
+  background-color: #4caf50
+
+.od-inameeting
+  background: #ff9800
+
+.od-backshortly
+  background: #ffeb3b
+
+.od-workingremotely
+  background: #4ebaaa
+
+.od-outoftheoffice
+  background: #e53935
 
 
 

@@ -1,5 +1,16 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<meta http-equiv="refresh" content="30" >
+<style type="text/css">
+		@page {
+ 		 size: 800px 480px;
+ 		 margin: 0;
+		}
+</style>
+
 <%= content_tag(:body, nil, :class => "od-#{@user.status.status.delete(' ').downcase}") do %>
 
-	<p><%= @user.status.status %></p>
+	<%= content_tag(:h1, nil, :class => "availability-text") do %>
+		<%= @user.status.status %>
+	<%end%>
 
 <% end %>

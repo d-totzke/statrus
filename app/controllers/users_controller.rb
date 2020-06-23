@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_signin, only: [:index]
+  skip_before_action :require_signin, only: [:index, :login, :update_status, :current_status]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   layout false, only: [:office_display]
 
@@ -39,14 +39,16 @@ class UsersController < ApplicationController
     if @user.save
       payload = {user: @user.id}
       token = JWT.encode(payload, 'okcool', 'HS256')
-      render json: {token: token}
+      redirect_to users_path, notice: "#{@user.name} created. Login token: #{token}"
     else
-      render json: @user.errors.full_messages
+      flash[:error] =@user.errors.empty? ? "Error" : @user.errors.full_messages.to_sentence
+      render :new
     end
   end
 
   def login
     userFound = User.find_by(email: request.headers[:email])
+    
     if userFound && userFound.authenticate(request.headers[:password])
       payload = {user: userFound.id}
       token = JWT.encode(payload, 'okcool', 'HS256')
@@ -61,7 +63,11 @@ class UsersController < ApplicationController
   def update
     
       if @user.update(user_params)
-        redirect_to landing_path, notice:'User was successfully updated.' 
+        if request.referrer == "http://localhost:3000/landing"
+          redirect_to landing_path, notice:"Status updated to #{@user.status.status}."
+        else
+          redirect_to @user, notice:"#{@user.name} successfully updated."
+        end
       else
         flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.to_sentence
         render :edit

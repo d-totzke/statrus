@@ -1,23 +1,24 @@
 <%= form_for(@user) do |f| %>
   <fieldset>
-    <div class="required form-group col-md-5">
+    <div class="required form-group col-md-6">
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, class:  'form-control' %>
       </div>
-      <div class="required form-group col-md-5">
+      <div class="required form-group col-md-6">
         <%= f.label :email %>
         <%= f.email_field :email, class:  'form-control' %>
       </div>
-      <div class="required form-group col-md-5">
+      <div class="required form-group col-md-6">
         <%= f.label :password %>
         <%= f.password_field :password, class:  'form-control' %>
       </div>
-      <div class="required form-group col-md-5">
+      <div class="required form-group col-md-6">
         <%= f.label :password_confirmation, "Confirm Password" %>
         <%= f.password_field :password_confirmation, class:  'form-control' %>
       </div>
     <p>
       <%= f.submit :class => "btn btn-green" %>
+      <%= link_to "Back", users_path, class: 'btn btn-primary oppose' %>
     </p>
   </fieldset>
 <% end %>
