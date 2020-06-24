@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get "/current_status" => "users#current_status"
   
   resource :sessions
-  resources :current_statuses
-  resources :statuses
   resources :users
   
   get 'landing' => 'users#landing', as: 'landing'  
