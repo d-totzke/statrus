@@ -1,17 +1,21 @@
 class UsersController < ApplicationController
   skip_before_action :require_signin, only: [:index, :login, :update_status, :current_status]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :show, :update]
   layout false, only: [:office_display]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    if current_user != @user
+      redirect_to landing_path, alert: "permission denied"
+    end
   end
 
   def office_display
@@ -58,12 +62,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
-    
+      requested = request.referrer.split('/').last
+      
       if @user.update(user_params)
-        if request.referrer == "http://localhost:3000/landing"
+        if requested == "landing"
           redirect_to landing_path, notice:"Status updated to #{@user.status.status}."
         else
           redirect_to @user, notice:"#{@user.name} successfully updated."
