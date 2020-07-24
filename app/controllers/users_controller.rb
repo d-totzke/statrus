@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_signin, only: [:index, :login, :update_status, :current_status]
+  skip_before_action :require_signin, only: [:index, :login, :update_status, :current_status, :office_display]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :show, :update]
   layout false, only: [:office_display]
@@ -19,7 +19,12 @@ class UsersController < ApplicationController
   end
 
   def office_display
-    @user = User.find(session[:user_id])
+    if request.params[:token]
+      decode_token = JWT.decode(request.params[:token], "okcool", true, {algorithm: 'HS256'})
+      @user = User.find(decode_token[0]["user"])
+    else
+      redirect_to users_path, alert: "Login token required"
+    end
   end
 
   def landing

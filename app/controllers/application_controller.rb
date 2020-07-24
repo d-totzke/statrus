@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   	def require_signin
     	unless current_user
-      		redirect_to new_session_url, alert: "Please sign in first!"
+      		redirect_to new_sessions_url, alert: "Please sign in first!"
     	end
   	end
   	
