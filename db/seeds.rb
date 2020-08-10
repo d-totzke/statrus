@@ -5,5 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create([{name: 'Dylan', email: 'dylan.totzke@uwaterloo.ca', password: 'pass.me', password_confirmation: 'pass.me'}])
+user = User.create([{name: 'Dylan', email: 'dylan.totzke@uwaterloo.ca', password: 'pass.me', password_confirmation: 'pass.me', status_id: 1}])
 status = Status.create([{status: 'Available'},{status: 'Back Shortly'},{status: 'In a Meeting'},{status: 'Working Remotely'},{status: 'Out of the Office'}])
