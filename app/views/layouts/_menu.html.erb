@@ -20,6 +20,7 @@
         <% if current_user %>
           <%= link_to "#{current_user.name}", current_user , class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", data: {toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" } %>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><%= link_to 'Account', current_user, class: "dropdown-item" %></li><
           <li><%= link_to 'Sign Out', sessions_path, method: :delete, class: "dropdown-item" %></li></ul></li>
         <% else %>
           <%= link_to 'Sign In', new_sessions_path %>
