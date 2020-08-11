@@ -18,7 +18,7 @@
       <li class="nav-list-border">
       <li class="nav-item dropdown">
         <% if current_user %>
-          <%= link_to "#{current_user.name}", current_user,class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", data: {toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" } %>
+          <%= link_to "#{current_user.name}", current_user , class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", data: {toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" } %>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><%= link_to 'Sign Out', sessions_path, method: :delete, class: "dropdown-item" %></li></ul></li>
         <% else %>
@@ -27,7 +27,7 @@
       </li>
       <li class="nav-list-border"><%= link_to "Dashboard", users_path %></li>
       <li class="nav-list-border"><%= link_to "About", '#',
-        :onclick => 'alert("IQC Statrus \nVersion 0.000.100 \nDeveloped by: Dylan Totzke \nInstitute for Quantum Computing \nUniversity of Waterloo \nCopyright \u00A92020 Dylan Totzke")'%></li>
+        :onclick => 'alert("IQC Statrus \nVersion 0.000.100 \nDeveloped by: Dylan Totzke \nCopyright \u00A92020 Dylan Totzke")'%></li>
     </ul>
   </div>
 </div>
