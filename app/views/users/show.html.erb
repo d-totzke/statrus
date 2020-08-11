@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-12">
 
-<p>
-  <strong>Name:</strong>
+<h2>
   <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
+</h2>
+<h4>  
   <%= @user.email %>
-</p>
+</h4>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>
+<div class="col-md-11">
+<%= link_to 'Back', users_path, class: 'btn btn-default' %>
+</div>
+<div class="col-md-1">
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary oppose' %> 
+</div>
+
