@@ -4,7 +4,9 @@
 <div class="list-group">
   <% @users.each do |u| %>
     <%= content_tag(:li, nil, :class => "list-group-item #{u.status.status.delete(' ').downcase}") do %>
-    <div class="status-item"><div class="col-md-2"><%= u.name%></div><div class="col-md-8">| <%= u.status.status %></div></div>
+    <div class="row">
+    <div class="status-item"><div class="col-md-9"><%= u.name%></div><div class="col-md-3 status-text"> <%= u.status.status %></div></div>
+   </div>
     <%end %>
 
   <% end %>

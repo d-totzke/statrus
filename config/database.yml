@@ -29,3 +29,12 @@ production:
   pool: 5
   username: emtqjgfulqqjyi
   password: d8762b4588c201490c74364fd6f6748ef974a7171f75225afa8881def10b460a
+
+# production:
+#   host: localhost
+#   adapter: postgresql
+#   encoding: unicode
+#   database: statrus
+#   pool: 5
+#   username: statrus
+#   password: cUv26KNj?jQNK{
